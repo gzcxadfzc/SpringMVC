@@ -30,6 +30,7 @@
                         <br> ${book.publisher} | ${book.releaseDate}
                     <p align=left>${fn:substring(book.description, 0, 100)}...
                     <p>${book.unitPrice}원
+                    <p>${book.category}
                 </div>
             </c:forEach>
         </div>

@@ -5,20 +5,37 @@ import com.springmvc.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/books")
 public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value = "/books", method= RequestMethod.GET)
+    @GetMapping
     public String requestBookList(Model model) {
         List<Book> list = bookService.getAllBookList();
         model.addAttribute("bookList", list);
+        return "books";
+    }
+
+    @GetMapping("/all")
+    public String requestAllBooks(Model model) {
+        List<Book> list = bookService.getAllBookList();
+        model.addAttribute("bookList", list);
+        return "books";
+    }
+
+    @GetMapping("/{category}")
+    public String requestBookByCategory(@PathVariable("category") String bookCategory, Model model) {
+        List<Book> booksByCategory = bookService.getBookListByCategory(bookCategory);
+        model.addAttribute("bookList", booksByCategory);
         return "books";
     }
 }
