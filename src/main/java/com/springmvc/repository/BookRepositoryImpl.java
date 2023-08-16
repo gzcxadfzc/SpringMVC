@@ -58,14 +58,22 @@ public class BookRepositoryImpl implements BookRepository {
             }
         }
 
-        if(booksByFilter.contains("category")) {
-            for(String category : filter.get("category")) {
+        if (booksByFilter.contains("category")) {
+            for (String category : filter.get("category")) {
                 booksByCategory.addAll(getBookListByCategory(category));
             }
         }
 
         booksByCategory.retainAll(booksByPublisher);
         return booksByCategory;
+    }
+
+    @Override
+    public Book getBookByID(final String bookId) {
+        return listOfBooks.stream()
+                .filter(book -> book.getBookId().equals(bookId))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("도서 Id가" + bookId + "인 도서를 찾을 수 없음"));
     }
 }
 

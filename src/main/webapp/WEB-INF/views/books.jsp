@@ -31,6 +31,7 @@
                     <p align=left>${fn:substring(book.description, 0, 100)}...
                     <p>${book.unitPrice}원
                     <p>${book.category}
+                    <p><a href="<c:url value="/books/book?id=${book.bookId}"/>" class="btn btn-Secondary" role="button">상세정보 &raquo;</a>
                 </div>
             </c:forEach>
         </div>

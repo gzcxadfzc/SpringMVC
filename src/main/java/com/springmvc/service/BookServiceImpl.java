@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Service
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
     @Autowired
     private BookRepository bookRepository;
 
@@ -27,5 +27,10 @@ public class BookServiceImpl implements BookService{
     @Override
     public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
         return bookRepository.getBookListByFilter(filter);
+    }
+
+    @Override
+    public Book getBookById(String bookId) {
+        return bookRepository.getBookByID(bookId);
     }
 }
