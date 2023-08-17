@@ -75,5 +75,10 @@ public class BookRepositoryImpl implements BookRepository {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("도서 Id가" + bookId + "인 도서를 찾을 수 없음"));
     }
+
+    @Override
+    public void setNewBook(Book book) {
+        listOfBooks.add(book);
+    }
 }
 

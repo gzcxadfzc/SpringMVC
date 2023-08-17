@@ -52,4 +52,20 @@ public class BookController {
         model.addAttribute("book", bookById);
         return "book";
     }
+
+    @GetMapping("/add")
+    public String requestAddBookForm(@ModelAttribute("NewBook") Book book) {
+        return "addBook";
+    }
+
+    @PostMapping("/add")
+    public String submitAddNewBook(@ModelAttribute("NewBook") Book book) {
+        bookService.setNewBook(book);
+        return "redirect:/books";
+    }
+
+    @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("addTitle", "신규도서등록");
+    }
 }
