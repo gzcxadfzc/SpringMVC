@@ -24,7 +24,7 @@
     <div class="container">
 
        <form:form modelAttribute = "NewBook" class="form-horizontal" >
-        <fieldset>
+        <field-set>
         <legend>${addTitle}</legend>
         <div class="form-group row">
             <label class="col-sm-2 control-label">도서 ID</label>
