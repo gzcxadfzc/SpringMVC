@@ -22,6 +22,31 @@
     </properties>
 
 
+  <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <source>8</source>
+            <target>8</target>
+            <compilerArgument>-Xlint:all</compilerArgument>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.2.1</version>
+          <configuration>
+            <mainClass>org.test.int1.Main</mainClass>
+          </configuration>
+        </plugin>
+      </plugins>
+  </build>
+
   <dependencies>
     <!-- Spring -->
     <dependency>
@@ -36,12 +61,14 @@
         </exclusion>
       </exclusions>
     </dependency>
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${org.springframework-version}</version>
     </dependency>
 
+    <!-- Spring Security -->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
@@ -145,29 +172,4 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
-
-  <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-          <configuration>
-            <source>8</source>
-            <target>8</target>
-            <compilerArgument>-Xlint:all</compilerArgument>
-            <showWarnings>true</showWarnings>
-            <showDeprecation>true</showDeprecation>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>exec-maven-plugin</artifactId>
-          <version>1.2.1</version>
-          <configuration>
-            <mainClass>org.test.int1.Main</mainClass>
-          </configuration>
-        </plugin>
-      </plugins>
-  </build>
 </project>
